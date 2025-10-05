@@ -26,17 +26,18 @@
 
 ![Architecture Diagram](docs/images/architecture.png)
 
-The system implements comprehensive risk management:
+The platform implements a real-time data processing pipeline:
 
-1. **Input Layer**: Positions, prices, and risk configuration
-2. **Core Engine**: Position management and risk calculations
-3. **Risk Calculations**: VaR, P&L tracking, exposure monitoring
-4. **Risk Controls**: Stop loss, circuit breakers, position limits
-5. **Analytics**: Performance metrics and risk reports
+1. **Data Sources**: WebSocket feeds from exchanges (Binance, Coinbase, etc.)
+2. **Ingestion Layer**: High-throughput data ingestion with buffering
+3. **Processing Engine**: Technical indicator calculations (SMA, EMA, RSI, MACD)
+4. **Storage Layer**: Time-series database for historical data
+5. **API Layer**: REST and WebSocket APIs for client access
+6. **Analytics**: Volume analysis, price trends, and market insights
 
-### 📉 VaR Calculation Flow
+### 📊 Data Flow
 
-![VaR Calculation](docs/images/var_calculation.png)
+![Data Flow Diagram](docs/images/data_flow.png)
 
 ### 🛠️ Installation
 
@@ -126,6 +127,23 @@ MIT License - see [LICENSE](LICENSE) for details.
 - **Analytics de Volume**: Rastreamento e análise de volume 24h
 - **Armazenamento de Dados Históricos**: Gerenciamento eficiente de dados de séries temporais
 - **WebSocket API**: Distribuição de dados em tempo real para clientes
+
+### 🏗️ Arquitetura
+
+![Diagrama de Arquitetura](docs/images/architecture.png)
+
+A plataforma implementa um pipeline de processamento de dados em tempo real:
+
+1. **Fontes de Dados**: Feeds WebSocket de exchanges (Binance, Coinbase, etc.)
+2. **Camada de Ingestão**: Ingestão de dados de alto throughput com buffering
+3. **Motor de Processamento**: Cálculos de indicadores técnicos (SMA, EMA, RSI, MACD)
+4. **Camada de Armazenamento**: Banco de dados de séries temporais para dados históricos
+5. **Camada de API**: APIs REST e WebSocket para acesso de clientes
+6. **Analytics**: Análise de volume, tendências de preço e insights de mercado
+
+### 📊 Fluxo de Dados
+
+![Diagrama de Fluxo de Dados](docs/images/data_flow.png)
 
 ### 📄 Licença
 
