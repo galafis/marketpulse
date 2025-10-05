@@ -21,23 +21,6 @@
 - **Historical Data Storage**: Efficient time-series data management
 - **WebSocket API**: Real-time data distribution to clients
 
-
-### 🏗️ Architecture
-
-![Architecture Diagram](docs/images/architecture.png)
-
-The system implements comprehensive risk management:
-
-1. **Input Layer**: Positions, prices, and risk configuration
-2. **Core Engine**: Position management and risk calculations
-3. **Risk Calculations**: VaR, P&L tracking, exposure monitoring
-4. **Risk Controls**: Stop loss, circuit breakers, position limits
-5. **Analytics**: Performance metrics and risk reports
-
-### 📉 VaR Calculation Flow
-
-![VaR Calculation](docs/images/var_calculation.png)
-
 ### 🛠️ Installation
 
 ```bash

@@ -1,0 +1,56 @@
+graph TB
+    subgraph "Data Sources"
+        EX1[Exchange 1]
+        EX2[Exchange 2]
+        EX3[Exchange 3]
+    end
+    
+    subgraph "Ingestion Layer"
+        WS[WebSocket Streams]
+        REST[REST API Polling]
+    end
+    
+    subgraph "MarketPulse Core"
+        MP[Market Pulse Engine]
+        DM[Data Manager]
+        MP --> DM
+    end
+    
+    subgraph "Storage"
+        TS[(Time Series DB)]
+        CACHE[In-Memory Cache]
+        DM --> TS
+        DM --> CACHE
+    end
+    
+    subgraph "Analytics"
+        TI[Technical Indicators]
+        VA[Volume Analytics]
+        PA[Price Analytics]
+        TI --> SMA[SMA Calculator]
+        TI --> EMA[EMA Calculator]
+        TI --> RSI[RSI Calculator]
+    end
+    
+    subgraph "Output Layer"
+        API[REST API]
+        WSS[WebSocket Server]
+        DASH[Dashboard - Future]
+    end
+    
+    EX1 --> WS
+    EX2 --> WS
+    EX3 --> REST
+    WS --> MP
+    REST --> MP
+    MP --> TI
+    MP --> VA
+    MP --> PA
+    CACHE --> API
+    CACHE --> WSS
+    TS --> DASH
+    
+    style MP fill:#e1f5ff
+    style TI fill:#ffe1f5
+    style CACHE fill:#fff4e1
+    style API fill:#e1ffe1

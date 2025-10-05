@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant Exchange
+    participant Pulse as MarketPulse
+    participant Storage as Data Storage
+    participant Analytics as Analytics Engine
+    participant Client
+    
+    Exchange->>Pulse: Stream market data
+    Note over Exchange,Pulse: Real-time price & volume
+    
+    Pulse->>Pulse: Validate data
+    Pulse->>Storage: Store tick data
+    Storage->>Storage: Update time series
+    
+    Pulse->>Analytics: Trigger analysis
+    Analytics->>Storage: Query historical data
+    Storage-->>Analytics: Return data window
+    
+    Analytics->>Analytics: Calculate SMA(20)
+    Analytics->>Analytics: Calculate EMA(12, 26)
+    Analytics->>Analytics: Calculate RSI(14)
+    Analytics->>Analytics: Calculate MACD
+    Analytics->>Analytics: Calculate Bollinger Bands
+    
+    Analytics-->>Pulse: Return indicators
+    Pulse->>Pulse: Update cache
+    
+    Client->>Pulse: Request latest data
+    Pulse->>Storage: Query latest tick
+    Storage-->>Pulse: Latest market data
+    Pulse-->>Client: Return data + indicators
+    
+    Client->>Pulse: Request 24h volume
+    Pulse->>Storage: Query 24h window
+    Storage-->>Pulse: Historical ticks
+    Pulse->>Pulse: Calculate volume
+    Pulse-->>Client: Return 24h volume
