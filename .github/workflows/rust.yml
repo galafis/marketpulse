@@ -1,0 +1,37 @@
+name: Rust CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        profile: minimal
+    - name: Install cargo-tarpaulin
+      run: cargo install cargo-tarpaulin
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests and generate coverage
+      run: cargo tarpaulin --verbose --workspace --out Xml
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: bf6f1013-4900-4128-bfbc-e996615dd8ed
+        files: coberturas/cobertura.xml # Adjust path if tarpaulin outputs elsewhere
+        fail_ci_if_error: true
+        verbose: true
+
