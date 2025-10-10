@@ -73,31 +73,39 @@ Output:
 
 ```rust
 use marketpulse::{MarketPulse, MarketData};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     let mut pulse = MarketPulse::new();
 
-    // Ingest market data
-    pulse.ingest(MarketData {
-        symbol: "BTCUSD".to_string(),
-        price: 50000.0,
-        volume: 1.5,
-        timestamp: 1234567890,
-    });
+    // Simulate market data ingestion
+    for i in 0..10 {
+        let timestamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_secs();
+        
+        pulse.ingest(MarketData {
+            symbol: "BTCUSD".to_string(),
+            price: 50000.0 + (i as f64 * 10.0),
+            volume: 1.5 + (i as f64 * 0.01),
+            timestamp,
+        });
+    }
 
-    // Get latest price
+    // Display analytics
     if let Some(latest) = pulse.get_latest("BTCUSD") {
-        println!("Latest price: ${}", latest.price);
+        println!("Latest BTCUSD:");
+        println!("  Price: ${:.2}", latest.price);
+        println!("  Volume: {:.2}", latest.volume);
     }
 
-    // Calculate SMA
-    if let Some(sma) = pulse.calculate_sma("BTCUSD", 20) {
-        println!("SMA(20): ${}", sma);
+    if let Some(sma_20) = pulse.calculate_sma("BTCUSD", 5) {
+        println!("SMA(5): ${:.2}", sma_20);
     }
 
-    // Get 24h volume
-    let volume = pulse.get_volume_24h("BTCUSD");
-    println!("24h Volume: {} BTC", volume);
+    let volume_24h = pulse.get_volume_24h("BTCUSD");
+    println!("24h Volume: {:.2} BTC", volume_24h);
 }
 ```
 
