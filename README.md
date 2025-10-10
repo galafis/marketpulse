@@ -1,7 +1,5 @@
 # 📊 MarketPulse - Real-Time Market Data Analytics Platform
 
-[![Rust CI](https://github.com/galafis/marketpulse/actions/workflows/rust.yml/badge.svg)](https://github.com/galafis/marketpulse/actions/workflows/rust.yml)
-[![Code Coverage](https://codecov.io/gh/galafis/marketpulse/branch/master/graph/badge.svg)](https://codecov.io/gh/galafis/marketpulse)
 
 
 [![Rust](https://img.shields.io/badge/rust-1.90%2B-orange.svg)](https://www.rust-lang.org/)
