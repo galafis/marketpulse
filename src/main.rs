@@ -1,5 +1,5 @@
-use std::time::{SystemTime, UNIX_EPOCH};
 use marketpulse::{MarketData, MarketPulse};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     println!("📊 MarketPulse - Real-Time Market Data Analytics");
@@ -13,7 +13,7 @@ fn main() {
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_secs();
-        
+
         pulse.ingest(MarketData {
             symbol: "BTCUSD".to_string(),
             price: 50000.0 + (i as f64 * 10.0),
@@ -36,4 +36,3 @@ fn main() {
     let volume_24h = pulse.get_volume_24h("BTCUSD");
     println!("\n💹 24h Volume: {:.2} BTC", volume_24h);
 }
-

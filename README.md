@@ -3,6 +3,8 @@
 
 
 [![Rust](https://img.shields.io/badge/rust-1.90%2B-orange.svg)](https://www.rust-lang.org/)
+[![CI](https://github.com/galafis/marketpulse/workflows/CI/badge.svg)](https://github.com/galafis/marketpulse/actions)
+[![codecov](https://codecov.io/gh/galafis/marketpulse/branch/master/graph/badge.svg)](https://codecov.io/gh/galafis/marketpulse)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 [English](#english) | [Português](#português)
@@ -71,6 +73,8 @@ Output:
 
 ### 📚 Usage Examples
 
+#### Basic Example
+
 ```rust
 use marketpulse::{MarketPulse, MarketData};
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -107,6 +111,21 @@ fn main() {
     let volume_24h = pulse.get_volume_24h("BTCUSD");
     println!("24h Volume: {:.2} BTC", volume_24h);
 }
+```
+
+#### More Examples
+
+See the `examples/` directory for more detailed examples:
+
+```bash
+# Basic usage
+cargo run --example basic_usage
+
+# Multiple trading symbols
+cargo run --example multiple_symbols
+
+# Trading signals with SMA crossover
+cargo run --example trading_signals
 ```
 
 ### 📄 License
@@ -154,6 +173,104 @@ A plataforma implementa um pipeline de processamento de dados em tempo real:
 ### 📊 Fluxo de Dados
 
 ![Diagrama de Fluxo de Dados](docs/images/data_flow.png)
+
+### 🛠️ Instalação
+
+```bash
+git clone https://github.com/galafis/marketpulse.git
+cd marketpulse
+cargo build --release
+```
+
+### 🎯 Início Rápido
+
+```bash
+cargo run --release
+```
+
+Saída:
+```
+📊 MarketPulse - Real-Time Market Data Analytics
+===============================================
+
+📈 Latest BTCUSD:
+  Price: $50990.00
+  Volume: 2.49
+
+📊 SMA(20): $50895.00
+
+💹 24h Volume: 199.50 BTC
+```
+
+### 📚 Exemplos de Uso
+
+#### Exemplo Básico
+
+```rust
+use marketpulse::{MarketPulse, MarketData};
+use std::time::{SystemTime, UNIX_EPOCH};
+
+fn main() {
+    let mut pulse = MarketPulse::new();
+
+    // Simular ingestão de dados de mercado
+    for i in 0..10 {
+        let timestamp = SystemTime::now()
+            .duration_since(UNIX_EPOCH)
+            .unwrap()
+            .as_secs();
+        
+        pulse.ingest(MarketData {
+            symbol: "BTCUSD".to_string(),
+            price: 50000.0 + (i as f64 * 10.0),
+            volume: 1.5 + (i as f64 * 0.01),
+            timestamp,
+        });
+    }
+
+    // Exibir analytics
+    if let Some(latest) = pulse.get_latest("BTCUSD") {
+        println!("Último BTCUSD:");
+        println!("  Preço: ${:.2}", latest.price);
+        println!("  Volume: {:.2}", latest.volume);
+    }
+
+    if let Some(sma_20) = pulse.calculate_sma("BTCUSD", 5) {
+        println!("SMA(5): ${:.2}", sma_20);
+    }
+
+    let volume_24h = pulse.get_volume_24h("BTCUSD");
+    println!("Volume 24h: {:.2} BTC", volume_24h);
+}
+```
+
+#### Mais Exemplos
+
+Veja o diretório `examples/` para exemplos mais detalhados:
+
+```bash
+# Uso básico
+cargo run --example basic_usage
+
+# Múltiplos símbolos de trading
+cargo run --example multiple_symbols
+
+# Sinais de trading com cruzamento de SMA
+cargo run --example trading_signals
+```
+
+### 🧪 Executar Testes
+
+```bash
+# Executar todos os testes
+cargo test
+
+# Executar testes com saída detalhada
+cargo test -- --nocapture
+
+# Executar clippy para análise de código
+cargo clippy -- -D warnings
+```
 
 ### 📄 Licença
 
