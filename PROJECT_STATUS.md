@@ -77,10 +77,10 @@ None - v1.0 is complete!
 - **Examples**: 3
 
 ### Performance
-- **Ingestion Rate**: 11,328,228 ticks/second
-- **SMA Calculation**: 33 nanoseconds
-- **Latest Retrieval**: 20 nanoseconds
-- **Volume Calculation**: 9.5 microseconds
+- **Ingestion Rate**: 11,375,673 ticks/second
+- **SMA Calculation**: 35 nanoseconds
+- **Latest Retrieval**: 19 nanoseconds
+- **Volume Calculation**: 9.4 microseconds
 
 ### Project Stats
 - **Total Lines of Code**: ~500

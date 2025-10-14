@@ -157,7 +157,7 @@ MarketPulse is designed for high performance:
 📥 Data Ingestion:    11M+ ticks/second
 📊 SMA Calculation:   35 nanoseconds average
 🔍 Latest Retrieval:  19 nanoseconds average
-💹 Volume Calc:       9.5 microseconds average
+💹 Volume Calc:       9.4 microseconds average
 ```
 
 Run benchmarks:
@@ -406,7 +406,7 @@ MarketPulse é projetado para alta performance:
 📥 Ingestão de Dados: 11M+ ticks/segundo
 📊 Cálculo SMA:       35 nanossegundos médio
 🔍 Busca Latest:      19 nanossegundos médio
-💹 Cálculo Volume:    9.5 microssegundos médio
+💹 Cálculo Volume:    9.4 microssegundos médio
 ```
 
 Execute benchmarks:
