@@ -4,5 +4,13 @@ version = "1.0.0"
 edition = "2021"
 authors = ["Gabriel Demetrios Lafis"]
 license = "MIT"
+description = "High-performance real-time market data analytics platform"
+repository = "https://github.com/galafis/marketpulse"
+keywords = ["market-data", "analytics", "trading", "finance", "technical-indicators"]
+categories = ["finance", "data-structures"]
 
 [dependencies]
+
+[[bench]]
+name = "performance"
+harness = false
