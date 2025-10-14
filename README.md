@@ -198,6 +198,41 @@ Quick contribution checklist:
 - Ensure all tests pass
 - Submit a pull request
 
+### ❓ FAQ
+
+**Q: How do I calculate other technical indicators?**  
+A: Currently, only SMA is implemented. EMA, RSI, MACD, and Bollinger Bands are planned for v2.0.
+
+**Q: Can I use this with real exchange data?**  
+A: The current version uses simulated data. Real exchange integration is planned for v2.0.
+
+**Q: What's the performance like?**  
+A: MarketPulse can ingest 11M+ ticks/second and calculate SMA in 35 nanoseconds on average.
+
+**Q: Is this production-ready?**  
+A: This is v1.0 with core functionality. For production use, consider adding error handling, persistence, and real-time data sources.
+
+### 🔧 Troubleshooting
+
+**Build fails with "toolchain not found"**
+```bash
+rustup default stable
+rustup update
+```
+
+**Tests fail**
+```bash
+cargo clean
+cargo test
+```
+
+**Performance issues**
+```bash
+# Always use --release for benchmarks
+cargo run --release
+cargo bench
+```
+
 ### 📄 License
 
 MIT License - see [LICENSE](LICENSE) for details.
@@ -411,6 +446,41 @@ Checklist rápido de contribuição:
 - Escreva testes para suas mudanças
 - Garanta que todos os testes passem
 - Submeta um pull request
+
+### ❓ Perguntas Frequentes
+
+**P: Como calcular outros indicadores técnicos?**  
+R: Atualmente, apenas SMA está implementado. EMA, RSI, MACD e Bandas de Bollinger estão planejados para v2.0.
+
+**P: Posso usar com dados reais de exchanges?**  
+R: A versão atual usa dados simulados. Integração com exchanges reais está planejada para v2.0.
+
+**P: Como é a performance?**  
+R: MarketPulse pode ingerir 11M+ ticks/segundo e calcular SMA em 35 nanossegundos em média.
+
+**P: Está pronto para produção?**  
+R: Esta é a v1.0 com funcionalidade core. Para uso em produção, considere adicionar tratamento de erros, persistência e fontes de dados em tempo real.
+
+### 🔧 Solução de Problemas
+
+**Build falha com "toolchain not found"**
+```bash
+rustup default stable
+rustup update
+```
+
+**Testes falham**
+```bash
+cargo clean
+cargo test
+```
+
+**Problemas de performance**
+```bash
+# Sempre use --release para benchmarks
+cargo run --release
+cargo bench
+```
 
 ### 📄 Licença
 
