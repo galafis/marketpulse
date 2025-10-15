@@ -1,5 +1,5 @@
-use std::time::{SystemTime, UNIX_EPOCH};
 use marketpulse::{MarketData, MarketPulse};
+use std::time::{SystemTime, UNIX_EPOCH};
 
 fn main() {
     println!("📈 Basic MarketPulse Usage Example\n");
@@ -13,7 +13,7 @@ fn main() {
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_secs();
-        
+
         pulse.ingest(MarketData {
             symbol: "BTCUSD".to_string(),
             price: 50000.0 + (i as f64 * 50.0),
