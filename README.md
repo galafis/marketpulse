@@ -2,10 +2,6 @@
 
 
 
-[![Rust](https://img.shields.io/badge/rust-1.90%2B-orange.svg)](https://www.rust-lang.org/)
-[![CI](https://github.com/galafis/marketpulse/workflows/CI/badge.svg)](https://github.com/galafis/marketpulse/actions)
-[![codecov](https://codecov.io/gh/galafis/marketpulse/branch/master/graph/badge.svg)](https://codecov.io/gh/galafis/marketpulse)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
 [English](#english) | [Português](#português)
 
